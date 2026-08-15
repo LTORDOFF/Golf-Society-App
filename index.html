@@ -19,186 +19,53 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; } 
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; -webkit-font-smoothing: antialiased; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        .card { 
-            background-color: white; 
-            border-radius: 1.25rem; 
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-            border-color: #e2e8f0;
-        }
-
-        .btn { 
-            padding: 0.625rem 1.25rem; 
-            border-radius: 0.75rem; 
-            font-weight: 600; 
-            font-size: 0.875rem;
-            transition: all 0.2s ease; 
-            cursor: pointer; 
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+        .card { background-color: white; border-radius: 1.25rem; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05); border-color: #e2e8f0; }
+        .btn { padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; transition: all 0.2s ease; cursor: pointer; border: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .btn:active { transform: scale(0.97); }
-        
-        .btn-primary { 
-            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
-            color: white; 
-            box-shadow: 0 4px 14px 0 rgba(13, 148, 136, 0.39);
-        }
-        .btn-primary:hover { 
-             background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
-             box-shadow: 0 6px 20px rgba(13, 148, 136, 0.23);
-        }
-        .btn-secondary { 
-            background-color: #f1f5f9; 
-            color: #475569; 
-        }
+        .btn-primary { background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); color: white; box-shadow: 0 4px 14px 0 rgba(13, 148, 136, 0.39); }
+        .btn-primary:hover { background: linear-gradient(135deg, #0f766e 0%, #115e59 100%); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.23); }
+        .btn-secondary { background-color: #f1f5f9; color: #475569; }
         .btn-secondary:hover { background-color: #e2e8f0; color: #1e293b; }
-
-        .btn-danger { 
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white; 
-            box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.39);
-        }
+        .btn-danger { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.39); }
         .btn-danger:hover { background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); }
-        
-        /* Pill Navigation - Compressed for mobile */
-        .tab-nav-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 0.375rem;
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.5rem;
-            scrollbar-width: none;
-        }
+        .tab-nav-container { display: flex; overflow-x: auto; gap: 0.375rem; padding-bottom: 0.5rem; margin-bottom: 0.5rem; scrollbar-width: none; }
         .tab-nav-container::-webkit-scrollbar { display: none; }
-        
-        .tab { 
-            cursor: pointer; 
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            white-space: nowrap; 
-            font-weight: 600;
-            transition: all 0.2s ease;
-            font-size: 0.8rem;
-            background-color: #f1f5f9;
-            color: #64748b;
-        }
+        .tab { cursor: pointer; padding: 0.5rem 1rem; border-radius: 9999px; white-space: nowrap; font-weight: 600; transition: all 0.2s ease; font-size: 0.8rem; background-color: #f1f5f9; color: #64748b; }
         .tab:hover { background-color: #e2e8f0; color: #0f172a; }
-        .tab.active { 
-            background-color: #0f766e; 
-            color: white; 
-            box-shadow: 0 2px 10px rgba(15, 118, 110, 0.2);
-        }
-
+        .tab.active { background-color: #0f766e; color: white; box-shadow: 0 2px 10px rgba(15, 118, 110, 0.2); }
         .admin-only { display: none; }
-        
-        /* Modern Loader */
         .loader-container { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem; }
-        .loader { 
-            width: 48px; height: 48px; 
-            border: 4px solid #ccfbf1; 
-            border-bottom-color: #0d9488; 
-            border-radius: 50%; 
-            display: inline-block; 
-            animation: rotation 1s linear infinite; 
-        }
+        .loader { width: 48px; height: 48px; border: 4px solid #ccfbf1; border-bottom-color: #0d9488; border-radius: 50%; display: inline-block; animation: rotation 1s linear infinite; }
         @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* Drag & Drop */
         .player-draggable { cursor: grab; }
         .player-draggable:active { cursor: grabbing; }
         .player-draggable.dragging { opacity: 0.4; transform: scale(0.98); }
         .drop-zone { transition: all 0.2s ease; border: 2px dashed transparent; }
         .drop-zone.drag-over { border-color: #0d9488; background-color: #f0fdfa; transform: scale(1.02); }
-
-        .player-item {
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-        }
+        .player-item { cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; }
         .player-item:hover { border-color: #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .player-item.selected {
-            background-color: #f0fdfa !important;
-            border-color: #0d9488 !important;
-            box-shadow: 0 0 0 1px #0d9488;
-            transform: scale(1.02);
-        }
-
-        /* AI Caddie Chat Styles */
+        .player-item.selected { background-color: #f0fdfa !important; border-color: #0d9488 !important; box-shadow: 0 0 0 1px #0d9488; transform: scale(1.02); }
         #ai-chat-history { scroll-behavior: smooth; }
-        .ai-bubble, .user-bubble { 
-            padding: 0.875rem 1.25rem; 
-            border-radius: 1.25rem; 
-            max-width: 85%; 
-            font-size: 0.95rem;
-            line-height: 1.5;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .ai-bubble { 
-            align-self: flex-start; 
-            background: white; 
-            border: 1px solid #e2e8f0; 
-            border-bottom-left-radius: 0.25rem;
-            color: #334155;
-        }
-        .user-bubble { 
-            align-self: flex-end; 
-            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); 
-            color: white; 
-            border-bottom-right-radius: 0.25rem;
-        }
-
-        /* Hero Glass Pattern */
-        .hero-pattern {
-            background-color: #0f766e;
-            background-image: radial-gradient(#14b8a6 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-        }
-
-        /* Form Inputs */
-        input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
-            width: 100%;
-            padding: 0.625rem 1rem;
-            border-radius: 0.75rem;
-            border: 1px solid #cbd5e1;
-            background-color: #f8fafc;
-            transition: all 0.2s;
-            outline: none;
-        }
-        input:focus, select:focus {
-            background-color: white;
-            border-color: #0d9488;
-            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
-        }
-        
+        .ai-bubble, .user-bubble { padding: 0.875rem 1.25rem; border-radius: 1.25rem; max-width: 85%; font-size: 0.95rem; line-height: 1.5; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .ai-bubble { align-self: flex-start; background: white; border: 1px solid #e2e8f0; border-bottom-left-radius: 0.25rem; color: #334155; }
+        .user-bubble { align-self: flex-end; background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); color: white; border-bottom-right-radius: 0.25rem; }
+        .hero-pattern { background-color: #0f766e; background-image: radial-gradient(#14b8a6 1px, transparent 1px); background-size: 20px 20px; background-position: 0 0, 10px 10px; }
+        input[type="text"], input[type="number"], input[type="date"], input[type="time"], select { width: 100%; padding: 0.625rem 1rem; border-radius: 0.75rem; border: 1px solid #cbd5e1; background-color: #f8fafc; transition: all 0.2s; outline: none; }
+        input:focus, select:focus { background-color: white; border-color: #0d9488; box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1); }
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
 <body class="p-2 md:p-6 lg:p-8">
-    <div id="loader-view" class="h-screen w-full flex items-center justify-center"></div>
+    <div id="loader-view" class="h-screen w-full flex items-center justify-center">
+        <div class="loader-container"><div class="loader mb-4"></div><p class="text-center font-bold text-slate-500 uppercase tracking-widest text-xs animate-pulse">Initializing Database...</p></div>
+    </div>
     
     <div id="main-content" class="max-w-6xl mx-auto hidden">
         <!-- Header Actions -->
@@ -209,10 +76,9 @@
             </button>
         </div>
 
-        <!-- Hero Section - Ultra Slim Mobile View -->
+        <!-- Hero Section -->
         <div class="hero-pattern text-white p-3 sm:p-6 rounded-2xl md:rounded-3xl shadow-md mb-4 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-900/90 to-brand-700/80"></div>
-            
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div class="flex items-center gap-2 sm:gap-4 flex-1">
                     <div class="text-xl sm:text-4xl bg-white/10 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl shadow-inner shrink-0 hidden sm:block">🏌️‍♂️</div>
@@ -227,14 +93,9 @@
                         <h2 class="text-sm sm:text-xl font-bold text-brand-100 leading-none">Golf Society</h2>
                     </div>
                 </div>
-                
                 <div class="w-full md:w-auto flex flex-col gap-2 min-w-[240px]">
-                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-white/20 shadow-sm" id="next-round-container">
-                        <!-- Next round injected here -->
-                    </div>
-                    <div id="global-upcoming-dates-container">
-                        <!-- Upcoming dates injected here -->
-                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-white/20 shadow-sm" id="next-round-container"></div>
+                    <div id="global-upcoming-dates-container"></div>
                 </div>
             </div>
         </div>
@@ -302,12 +163,11 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration & Initialization
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'airbus-golf-society';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+        // FIREBASE CONFIGURATION
+        const firebaseConfig = {
             apiKey: "AIzaSyD1NKRFAcAM_q56wNvjIcymfCrx90efjs8",
             authDomain: "airbus-golf-society.firebaseapp.com",
             projectId: "airbus-golf-society",
@@ -320,41 +180,48 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
         
-        // Helper path for public society data
+        // This matches the path structure used in the importData.js script
+        const appId = 'airbus-golf-society';
         const getColRef = (colName) => collection(db, 'artifacts', appId, 'public', 'data', colName);
         const getDocRef = (colName, docId) => doc(db, 'artifacts', appId, 'public', 'data', colName, docId);
 
         // Core App State
         window.AppState = { 
-            players: [], 
-            courses: [], 
-            gameScores: [], 
-            pastRounds: {}, 
-            currentGame: { isActive: false }, 
-            isUserAdmin: false, 
-            adminPassword: "golf123", // Simple client-side admin password check like the original
-            gameDates: [], 
-            handicapHistory: [], 
-            allSeasons: [], 
-            currentSeason: '' 
+            players: [], courses: [], gameScores: [], pastRounds: {}, currentGame: { isActive: false }, 
+            isUserAdmin: false, adminPassword: "golf123", gameDates: [], handicapHistory: [], 
+            allSeasons: [], currentSeason: '', selectedPlayerStats: null
         };
         
         window.draggedPlayer = null;
         window.pastSeasonsDataRendered = false;
 
+        // Add a global sanitizer to instantly fix mangled dates coming from Firebase
+        window.sanitizeDBDate = function(dStr) {
+            if (!dStr) return "2000-01-01";
+            dStr = String(dStr);
+            
+            // Fix mangled dates from the import script (e.g., "2026 01:00:00-08-14")
+            const mangledMatch = dStr.match(/^(\d{4})\s\d{2}:\d{2}:\d{2}-(\d{2})-(\d{2})$/);
+            if (mangledMatch) return `${mangledMatch[1]}-${mangledMatch[2]}-${mangledMatch[3]}`;
+            
+            // Fix generic DD/MM/YYYY with timestamps
+            if (dStr.match(/^\d{2}\/\d{2}\/\d{4}/)) {
+                const parts = dStr.split(' ')[0].split('/');
+                return `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+            
+            // Fix standard dates with timestamps (e.g., "2026-08-14T01:00:00")
+            if (dStr.match(/^\d{4}-\d{2}-\d{2}/)) return dStr.substring(0, 10);
+            
+            return dStr;
+        };
+
         // --- Initialization ---
         window.onload = async function() {
             setLoading(true, "Connecting to the clubhouse database...");
             try {
-                // Authenticate
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
+                await signInAnonymously(auth);
                 if (!auth.currentUser) throw new Error("Failed to authenticate with database.");
-
                 await getInitialData();
             } catch (e) {
                 console.error(e);
@@ -368,17 +235,14 @@
                 const seasonsSnap = await getDocs(getColRef('seasons'));
                 let seasons = seasonsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
                 
-                // Seed initial season if empty (for fresh installations)
                 if (seasons.length === 0) {
                     const defaultSeason = { name: "Inaugural Season", isActive: true };
                     await addDoc(getColRef('seasons'), defaultSeason);
                     seasons = [{ id: 'new', ...defaultSeason }];
                 }
 
-                const activeSeason = seasons.find(s => s.isActive);
-                if (!activeSeason) throw new Error("No active season found.");
-                
-                AppState.allSeasons = seasons.map(s => s.name);
+                const activeSeason = seasons.find(s => s.isActive) || seasons[seasons.length - 1];
+                AppState.allSeasons = [...new Set(seasons.map(s => s.name))];
                 AppState.currentSeason = activeSeason.name;
 
                 // Fetch Players
@@ -389,26 +253,35 @@
                 const coursesSnap = await getDocs(getColRef('courses'));
                 AppState.courses = coursesSnap.docs.map(d => ({ id: d.id, ...d.data() }));
 
-                // Fetch Scores
+                // Fetch Scores and Sanitize Dates
                 const scoresSnap = await getDocs(getColRef('scores'));
-                const allScores = scoresSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                const allScores = scoresSnap.docs.map(d => {
+                    const data = d.data();
+                    data.date = window.sanitizeDBDate(data.date);
+                    return { id: d.id, ...data };
+                });
                 
                 AppState.gameScores = allScores.filter(s => String(s.season).toLowerCase() === String(AppState.currentSeason).toLowerCase());
 
-                // Fetch Handicap History
+                // Fetch Handicap History and Sanitize Dates
                 const historySnap = await getDocs(getColRef('handicapHistory'));
-                AppState.handicapHistory = historySnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                AppState.handicapHistory = historySnap.docs.map(d => {
+                    const data = d.data();
+                    data.date = window.sanitizeDBDate(data.date);
+                    return { id: d.id, ...data };
+                });
                 
-                // Process Past Rounds (Grouping scores by date/course)
+                // Process Past Rounds (Current Season Only)
                 const pastRounds = {};
                 AppState.gameScores.forEach(score => {
-                    const dateStr = new Date(score.date).toLocaleDateString('en-GB');
+                    let dateStr = score.date; // Now guaranteed to be YYYY-MM-DD
+                    if (dateStr && dateStr.includes('-')) {
+                        const parts = dateStr.split('-');
+                        dateStr = `${parts[2]}/${parts[1]}/${parts[0]}`; // Convert YYYY-MM-DD to DD/MM/YYYY for UI
+                    }
                     const roundKey = `${dateStr} - ${score.courseName}`;
                     if (!pastRounds[roundKey]) pastRounds[roundKey] = [];
-                    pastRounds[roundKey].push({
-                        playerName: score.playerName,
-                        stablefordPoints: parseInt(score.stablefordPoints)
-                    });
+                    pastRounds[roundKey].push({ playerName: score.playerName, stablefordPoints: parseInt(score.stablefordPoints) });
                 });
                 for (const key in pastRounds) { pastRounds[key].sort((a, b) => b.stablefordPoints - a.stablefordPoints); }
                 AppState.pastRounds = pastRounds;
@@ -422,7 +295,15 @@
                     AppState.currentGame = { isActive: false };
                 }
 
-                // Initial UI Render
+                // Fetch Upcoming Dates
+                const settingsRef = getDocRef('system', 'settings');
+                const settingsSnap = await getDoc(settingsRef);
+                if (settingsSnap.exists() && settingsSnap.data().gameDates) {
+                    AppState.gameDates = settingsSnap.data().gameDates;
+                } else {
+                    AppState.gameDates = [];
+                }
+
                 renderAllComponents();
                 updateRoleViews();
                 setLoading(false);
@@ -432,7 +313,16 @@
             }
         }
 
-        
+        // --- Database Action Helpers ---
+        window.updateUpcomingDatesDb = async function(newDatesArray) {
+            try {
+                if(!auth.currentUser) return;
+                await setDoc(getDocRef('system', 'settings'), { gameDates: newDatesArray }, { merge: true });
+                AppState.gameDates = newDatesArray;
+                return "Dates updated successfully.";
+            } catch(e) { throw e; }
+        };
+
         window.saveCurrentGame = async function(gameData) {
             try {
                 if(!auth.currentUser) return;
@@ -484,8 +374,7 @@
         window.finalizeRoundDb = async function(finalGameData) {
             try {
                 if(!auth.currentUser) return;
-                const gameDate = finalGameData.date; // Ensure we keep ISO format
-                
+                const gameDate = finalGameData.date; 
                 const sortedMembers = [...finalGameData.players].sort((a, b) => b.stablefordPoints - a.stablefordPoints);
                 
                 for (let index = 0; index < sortedMembers.length; index++) {
@@ -499,7 +388,6 @@
                     if (placing === 2) { leaderboardPoints += 4; positionalAdjustment = -1.0; }
                     if (placing === 3) { leaderboardPoints += 2; positionalAdjustment = finalGameData.isNearestPinRuleActive ? -1.0 : -0.3; }
 
-                    // Add score
                     await addDoc(getColRef('scores'), {
                         season: AppState.currentSeason,
                         date: gameDate,
@@ -508,12 +396,10 @@
                         stablefordPoints: leaderboardPoints
                     });
 
-                    // Update player handicap
                     const dbPlayer = AppState.players.find(p => p.name === player.name);
                     if (dbPlayer) {
                         const currentHandicap = parseFloat(dbPlayer.handicap);
                         
-                        // Add to history
                         await addDoc(getColRef('handicapHistory'), {
                             date: gameDate,
                             playerName: player.name,
@@ -528,14 +414,10 @@
                         const maxHandicap = (String(player.name).toLowerCase() === 'sue wade starkey') ? 54 : 28;
                         if (newHandicap > maxHandicap) newHandicap = maxHandicap;
 
-                        // Update doc
-                        await updateDoc(getDocRef('players', dbPlayer.id), {
-                            handicap: parseFloat(newHandicap.toFixed(1))
-                        });
+                        await updateDoc(getDocRef('players', dbPlayer.id), { handicap: parseFloat(newHandicap.toFixed(1)) });
                     }
                 }
 
-                // Add Guest scores
                 if (finalGameData.guests && finalGameData.guests.length > 0) {
                     for (const guest of finalGameData.guests) {
                          await addDoc(getColRef('scores'), {
@@ -548,7 +430,6 @@
                     }
                 }
 
-                // Clear Active Game
                 await window.clearCurrentGame();
                 return "Round finalized successfully!";
             } catch (e) { throw e; }
@@ -558,7 +439,6 @@
             try {
                 if(!auth.currentUser) return;
                 
-                // Calculate Final Leaderboard cuts
                 const leaderboardData = _calculateLeaderboardForSeason(AppState.currentSeason, AppState.players, AppState.gameScores);
                 const top5Players = leaderboardData.slice(0, 5);
                 const dockages = [5.0, 3.4, 2.4, 1.4, 0.6];
@@ -573,20 +453,14 @@
                         const maxHandicap = (String(player.name).toLowerCase() === 'sue wade starkey') ? 54 : 28;
                         if (newHandicap > maxHandicap) newHandicap = maxHandicap;
                         
-                        await updateDoc(getDocRef('players', dbPlayer.id), {
-                            handicap: parseFloat(newHandicap.toFixed(1))
-                        });
+                        await updateDoc(getDocRef('players', dbPlayer.id), { handicap: parseFloat(newHandicap.toFixed(1)) });
                     }
                 }
 
-                // Set old season to inactive
                 const seasonsSnap = await getDocs(getColRef('seasons'));
-                for (const doc of seasonsSnap.docs) {
-                     await updateDoc(getDocRef('seasons', doc.id), { isActive: false });
-                }
-
-                // Create new season
+                for (const doc of seasonsSnap.docs) { await updateDoc(getDocRef('seasons', doc.id), { isActive: false }); }
                 await addDoc(getColRef('seasons'), { name: newSeasonName, isActive: true });
+                
                 return `Successfully started new season: ${newSeasonName}. End-of-season handicap adjustments applied.`;
             } catch(e) { throw e; }
         };
@@ -596,7 +470,6 @@
                 if(!auth.currentUser) return;
                 if (AppState.gameScores.length === 0) throw new Error("No rounds in current season to undo.");
                 
-                // Find latest date in current season scores
                 let lastRoundDate = new Date(0);
                 AppState.gameScores.forEach(score => {
                     const d = new Date(score.date);
@@ -604,26 +477,21 @@
                 });
                 const lastDateStr = lastRoundDate.toISOString().split('T')[0];
 
-                // Revert Handicaps from History
-                const recentHistory = AppState.handicapHistory.filter(h => h.date.startsWith(lastDateStr));
+                const recentHistory = AppState.handicapHistory.filter(h => h.date && h.date.startsWith(lastDateStr));
                 for(const historyEntry of recentHistory) {
                     const dbPlayer = AppState.players.find(p => p.name === historyEntry.playerName);
-                    if(dbPlayer) {
-                        await updateDoc(getDocRef('players', dbPlayer.id), { handicap: parseFloat(historyEntry.handicap) });
-                    }
+                    if(dbPlayer) { await updateDoc(getDocRef('players', dbPlayer.id), { handicap: parseFloat(historyEntry.handicap) }); }
                     await deleteDoc(getDocRef('handicapHistory', historyEntry.id));
                 }
 
-                // Delete scores for that date
-                const recentScores = AppState.gameScores.filter(s => s.date.startsWith(lastDateStr));
-                for(const scoreEntry of recentScores) {
-                     await deleteDoc(getDocRef('scores', scoreEntry.id));
-                }
+                const recentScores = AppState.gameScores.filter(s => s.date && s.date.startsWith(lastDateStr));
+                for(const scoreEntry of recentScores) { await deleteDoc(getDocRef('scores', scoreEntry.id)); }
                 
                 return "Successfully undone the last round.";
             } catch (e) { throw e; }
         };
 
+        // Calculation Helpers
         function _calculateLeaderboardForSeason(seasonName, playersArray, scoresArray) {
             const seasonScores = scoresArray.filter(s => String(s.season).trim().toLowerCase() === String(seasonName).trim().toLowerCase());
             if (seasonScores.length === 0) return [];
@@ -638,7 +506,6 @@
 
             const leaderboardData = seasonPlayerNames.map(playerName => {
                 const playerRounds = seasonScores.filter(s => s.playerName === playerName);
-
                 const baseScores = playerRounds.map(round => {
                     const pointsWithBonus = parseInt(round.stablefordPoints);
                     const roundScores = scoresByDate[round.date].sort((a, b) => parseInt(b.stablefordPoints) - parseInt(a.stablefordPoints));
@@ -648,7 +515,6 @@
                     if (rank === 1) bonus = 7;
                     else if (rank === 2) bonus = 4;
                     else if (rank === 3) bonus = 2;
-
                     return pointsWithBonus - bonus;
                 });
 
@@ -656,7 +522,6 @@
                 const top5Scores = stablefordScores.slice(0, 5);
                 const totalScore = top5Scores.reduce((sum, current) => sum + current, 0);
                 const lowestQualifyingScore = top5Scores.length > 0 ? Math.min(...top5Scores) : '-';
-
                 const averageBaseScore = baseScores.length > 0 ? (baseScores.reduce((a, b) => a + b, 0) / baseScores.length).toFixed(1) : '-';
                 const currentPlayerData = playersArray.find(p => p.name === playerName);
                 const displayHandicap = currentPlayerData ? parseFloat(currentPlayerData.handicap) : 'N/A';
@@ -678,7 +543,11 @@
              const allPastSeasons = {};
              try {
                  const scoresSnap = await getDocs(getColRef('scores'));
-                 const allScores = scoresSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                 const allScores = scoresSnap.docs.map(d => {
+                     const data = d.data();
+                     data.date = window.sanitizeDBDate(data.date);
+                     return { id: d.id, ...data };
+                 });
                  
                  for (const seasonName of AppState.allSeasons) {
                      if (seasonName !== AppState.currentSeason) {
@@ -696,7 +565,11 @@
                 if (!player) throw new Error("Player not found");
                 
                 const scoresSnap = await getDocs(getColRef('scores'));
-                const allScoresData = scoresSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                const allScoresData = scoresSnap.docs.map(d => {
+                    const data = d.data();
+                    data.date = window.sanitizeDBDate(data.date);
+                    return { id: d.id, ...data };
+                });
                 
                 const allPlayerScores = allScoresData
                     .filter(s => s.playerName === playerName)
@@ -724,7 +597,11 @@
                 }
                 
                 const historySnap = await getDocs(getColRef('handicapHistory'));
-                const allHistory = historySnap.docs.map(d => ({ id: d.id, ...d.data() }));
+                const allHistory = historySnap.docs.map(d => {
+                    const data = d.data();
+                    data.date = window.sanitizeDBDate(data.date);
+                    return { id: d.id, ...data };
+                });
                 const playerHandicapHistory = allHistory.filter(h => h.playerName === playerName);
 
                 return {
@@ -738,7 +615,7 @@
             } catch(e) { throw e; }
         };
 
-        
+        // --- UI Interactions ---
         document.getElementById('tab-nav').addEventListener('click', (e) => {
             const tab = e.target.closest('.tab');
             if (tab) {
@@ -766,9 +643,7 @@
                 updateRoleViews();
                 renderAllComponents(); 
                 showMessage('🔓 Admin mode unlocked.', 'success');
-            } else {
-                showMessage('Incorrect password.', 'error');
-            }
+            } else { showMessage('Incorrect password.', 'error'); }
         });
         
         document.getElementById('setup-new-game-cta-btn').addEventListener('click', () => document.querySelector('button[data-tab="upcoming-games-view"]').click());
@@ -824,7 +699,7 @@
                             <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center text-2xl">🏆</div>
                             <h3 class="text-xl font-bold text-slate-800">Leaderboard Scoring</h3>
                         </div>
-                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">The main society leaderboard is calculated based on each player's <strong>best 5 Stableford scores</strong> throughout the season. Only your top 5 rounds count towards your total score, meaning you can drop poor rounds if you play more than 5 times.</p>
+                        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">The main society leaderboard is calculated based on each player's <strong>best 5 Stableford scores</strong> throughout the season. Only your top 5 rounds count towards your total score.</p>
                     </div>
 
                     <div class="card p-6 md:p-8">
@@ -1009,7 +884,7 @@ Keep responses concise and formatted for a chat bubble.`;
                 }
 
                 try {
-                    const apiKey = "AIzaSyCCT_M6csHLmfuPMk4C0A5tZbVelvu6J5M"; // API Key from your original script
+                    const apiKey = "AIzaSyCCT_M6csHLmfuPMk4C0A5tZbVelvu6J5M";
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
                     
                     const payload = {
@@ -1038,10 +913,7 @@ Keep responses concise and formatted for a chat bubble.`;
             input.onkeypress = (e) => { if (e.key === 'Enter') handleSend(); };
             
             document.querySelectorAll('.ai-suggestion').forEach(btn => {
-                btn.onclick = () => {
-                    input.value = btn.dataset.query;
-                    handleSend();
-                };
+                btn.onclick = () => { input.value = btn.dataset.query; handleSend(); };
             });
         }
 
@@ -1076,19 +948,13 @@ Keep responses concise and formatted for a chat bubble.`;
                     document.getElementById('rerandomize-groups-btn').addEventListener('click', handleRerandomize);
                 } else {
                     document.getElementById('generate-tee-sheet-btn').addEventListener('click', setupNewGame);
-                    document.getElementById('toggle-inline-course-form').addEventListener('click', () => {
-                        document.getElementById('inline-add-course-form').classList.toggle('hidden');
-                    });
-                     document.getElementById('addGuestBtn').addEventListener('click', handleAddGuest);
+                    document.getElementById('toggle-inline-course-form').addEventListener('click', () => { document.getElementById('inline-add-course-form').classList.toggle('hidden'); });
+                    document.getElementById('addGuestBtn').addEventListener('click', handleAddGuest);
                     document.getElementById('submit-inline-course-btn').addEventListener('click', handleInlineAddCourse);
                     document.getElementById('search-slope-rating-btn').addEventListener('click', searchForSlope);
                     document.getElementById('auto-generate-times-btn').addEventListener('click', handleAutoGenerateTeeTimes);
-                    document.getElementById('selectAllPlayersBtn').addEventListener('click', () => {
-                        document.querySelectorAll('#player-selection-list input[type="checkbox"]').forEach(checkbox => checkbox.checked = true);
-                    });
-                    document.getElementById('deselectAllPlayersBtn').addEventListener('click', () => {
-                        document.querySelectorAll('#player-selection-list input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-                    });
+                    document.getElementById('selectAllPlayersBtn').addEventListener('click', () => { document.querySelectorAll('#player-selection-list input[type="checkbox"]').forEach(checkbox => checkbox.checked = true); });
+                    document.getElementById('deselectAllPlayersBtn').addEventListener('click', () => { document.querySelectorAll('#player-selection-list input[type="checkbox"]').forEach(checkbox => checkbox.checked = false); });
                 }
             }
         }
@@ -1097,7 +963,8 @@ Keep responses concise and formatted for a chat bubble.`;
             const container = document.getElementById('past-rounds-view');
             const rounds = AppState.pastRounds || {};
             if (Object.keys(rounds).length === 0) { container.innerHTML = `<div class="card p-10 text-center text-slate-500 flex flex-col items-center"><div class="text-3xl sm:text-4xl mb-3 opacity-50">📅</div><h3 class="text-lg font-bold">No Rounds Yet</h3><p class="text-xs sm:text-sm mt-1">No past rounds recorded for ${AppState.currentSeason || 'this season'}.</p></div>`; return; }
-            let html = '<div class="space-y-3 sm:space-y-4 max-w-4xl mx-auto">';
+            let html = `<div class="space-y-3 sm:space-y-4 max-w-4xl mx-auto"><div class="mb-4 sm:mb-6"><h2 class="text-xl sm:text-3xl font-extrabold text-slate-800">Current Season Rounds</h2><p class="text-[10px] sm:text-sm text-slate-500 mt-1">Showing historical rounds for the active ${AppState.currentSeason} season.</p></div>`;
+            
             const sortedRoundKeys = Object.keys(rounds).sort((a, b) => parseDate(b.split(' - ')[0]) - parseDate(a.split(' - ')[0]));
             
             for (const roundKey of sortedRoundKeys) {
@@ -1187,6 +1054,27 @@ Keep responses concise and formatted for a chat bubble.`;
                         <button id="undo-last-round-btn" class="btn btn-danger w-full py-2 sm:py-2.5 text-xs sm:text-base">Undo Last Finalized Round</button>
                     </div>
                 </div>
+
+                <div class="card p-4 sm:p-8 max-w-5xl mx-auto mt-4 sm:mt-6 bg-slate-50/50">
+                    <div class="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-sm sm:text-base shrink-0">📅</div>
+                        <h3 class="text-base sm:text-xl font-bold text-slate-800">Manage Upcoming Dates</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-500 text-[10px] sm:text-sm mb-3">Add future society dates to show them on the main dashboard for all members.</p>
+                            <form id="addDateForm" class="flex gap-2">
+                                <input type="date" id="newUpcomingDate" required class="flex-grow text-sm sm:text-base p-2 sm:p-2.5 shadow-sm border-slate-200">
+                                <button type="submit" class="btn btn-primary px-3 sm:px-4 text-xs sm:text-sm whitespace-nowrap shadow-md">Add Date</button>
+                            </form>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-700 text-xs sm:text-sm border-b border-slate-200 pb-2 mb-2">Scheduled Dates</h4>
+                            <ul id="manage-dates-list" class="space-y-2 max-h-40 overflow-y-auto pr-2 scrollbar-thin">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             `;
             document.getElementById('addPlayerForm').addEventListener('submit', async (e) => {
                 e.preventDefault(); 
@@ -1208,6 +1096,144 @@ Keep responses concise and formatted for a chat bubble.`;
             
             document.getElementById('undo-last-round-btn').addEventListener('click', handleUndoLastRound);
             document.getElementById('start-new-season-btn').addEventListener('click', handleStartNewSeason);
+            
+            // Render the UI list of dates
+            renderManageDatesList();
+
+            // Handle adding a new date
+            document.getElementById('addDateForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const newDate = document.getElementById('newUpcomingDate').value;
+                if(!newDate) return;
+                
+                const newDates = [...(AppState.gameDates || [])];
+                if(newDates.includes(newDate)) { showMessage('Date already exists.', 'error'); return; }
+                newDates.push(newDate);
+                
+                setLoading(true, 'Adding date...');
+                try {
+                    await window.updateUpcomingDatesDb(newDates);
+                    document.getElementById('newUpcomingDate').value = '';
+                    renderAllComponents(); // Re-renders UI and Dashboard header
+                    showMessage('Date added.', 'success');
+                } catch(err) { handleFailure(err); }
+                finally { setLoading(false); }
+            });
+        }
+
+        // Helper function to build the date list inside the Manage Society view
+        function renderManageDatesList() {
+            const list = document.getElementById('manage-dates-list');
+            if(!list) return;
+            const dates = [...(AppState.gameDates || [])].sort();
+            
+            if (dates.length === 0) {
+                list.innerHTML = '<li class="text-[10px] sm:text-sm text-slate-500 italic p-2 bg-white rounded border border-slate-100">No upcoming dates scheduled.</li>';
+                return;
+            }
+            
+            list.innerHTML = dates.map(d => `
+                <li class="flex justify-between items-center bg-white p-2 sm:p-2.5 rounded border border-slate-200 shadow-sm text-[10px] sm:text-sm transition-colors hover:border-slate-300">
+                    <span class="font-bold text-slate-700 flex items-center gap-2"><span class="text-slate-400">🗓️</span> ${new Date(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                    <button type="button" class="text-red-500 hover:bg-red-50 hover:text-red-700 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold transition-colors remove-date-btn" data-date="${d}">✕</button>
+                </li>
+            `).join('');
+
+            document.querySelectorAll('.remove-date-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const dateToRemove = e.currentTarget.dataset.date;
+                    const newDates = AppState.gameDates.filter(d => d !== dateToRemove);
+                    setLoading(true, 'Removing date...');
+                    try {
+                        await window.updateUpcomingDatesDb(newDates);
+                        renderAllComponents();
+                        showMessage('Date removed.', 'success');
+                    } catch(err) { handleFailure(err); }
+                    finally { setLoading(false); }
+                });
+            });
+        }
+
+        // --- ASYNC RENDER FUNCTIONS (FIXED FOR FIREBASE) ---
+        async function renderPlayerStatsView() {
+            const container = document.getElementById('player-stats-view');
+            if (AppState.selectedPlayerStats) {
+                const playerName = AppState.selectedPlayerStats;
+                container.innerHTML = `<div class="card p-10 sm:p-12 flex flex-col items-center justify-center"><div class="loader mb-3 sm:mb-4"></div><p class="text-slate-500 font-medium text-xs sm:text-sm">Fetching dossier for ${playerName}...</p></div>`;
+                try {
+                    const data = await window.fetchPlayerStats(playerName);
+                    handlePlayerStatsData(data);
+                } catch(e) { handleFailure(e); }
+            } else {
+                let html = `<div class="max-w-4xl mx-auto"><div class="mb-4 sm:mb-6"><h2 class="text-xl sm:text-3xl font-extrabold text-slate-800">Player Directory</h2><p class="text-slate-500 mt-1 sm:mt-2 text-xs sm:text-base">Select a player to view their complete society history and statistics.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">`;
+                
+                (AppState.players || []).forEach(p => {
+                    html += `<button class="card p-2.5 sm:p-4 hover:border-brand-300 hover:shadow-md transition-all text-left flex items-center gap-3 sm:gap-4 player-stats-btn group" data-player-name="${p.name}">${getAvatar(p.name, 'w-8 h-8 sm:w-12 sm:h-12 text-xs sm:text-lg shadow-sm group-hover:scale-105 transition-transform')}<div><div class="font-bold text-slate-800 group-hover:text-brand-700 transition-colors text-xs sm:text-base leading-tight">${p.name || 'Unknown'}</div><div class="text-[9px] sm:text-xs font-semibold text-slate-500 mt-0.5">HCP: ${(Number(p.handicap) || 0).toFixed(1)}</div></div></button>`;
+                });
+                html += `</div></div>`;
+                container.innerHTML = html;
+                document.querySelectorAll('.player-stats-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                    AppState.selectedPlayerStats = e.currentTarget.dataset.playerName;
+                    renderPlayerStatsView();
+                }));
+            }
+        }
+
+        async function renderPastSeasonsView() {
+            const container = document.getElementById('past-seasons-view');
+            const pastSeasons = (AppState.allSeasons || []).filter(s => s !== AppState.currentSeason);
+
+            if (pastSeasons.length === 0) {
+                container.innerHTML = `<div class="card p-6 sm:p-10 text-center text-slate-500 flex flex-col items-center"><div class="text-2xl sm:text-4xl mb-2 sm:mb-3 opacity-50">📚</div><h3 class="text-sm sm:text-lg font-bold">No Archives Yet</h3><p class="text-[10px] sm:text-sm mt-1">Past seasons will appear here once archived.</p></div>`;
+                return;
+            }
+
+            container.innerHTML = `<div class="card p-8 sm:p-12 flex flex-col items-center justify-center"><div class="loader mb-2 sm:mb-4"></div><p class="text-slate-500 font-medium text-[10px] sm:text-sm">Retrieving historical archives...</p></div>`;
+            try {
+                const allPastSeasons = await window.fetchPastSeasonsLeaderboards();
+                handlePastSeasonsData(allPastSeasons);
+            } catch(e) { handleFailure(e); }
+        }
+
+        function handlePastSeasonsData(allPastSeasons) {
+            const container = document.getElementById('past-seasons-view');
+            let html = '<div class="space-y-3 sm:space-y-6 max-w-5xl mx-auto">';
+            const sortedSeasons = Object.keys(allPastSeasons || {}).sort().reverse();
+
+            if (sortedSeasons.length === 0) {
+                 container.innerHTML = `<div class="card p-6 sm:p-10 text-center text-slate-500"><h3 class="text-sm sm:text-lg font-bold">No Archives Yet</h3></div>`;
+                 window.pastSeasonsDataRendered = true;
+                 return;
+            }
+
+            for (const seasonName of sortedSeasons) {
+                const leaderboardData = allPastSeasons[seasonName];
+                html += `<div class="card overflow-hidden border border-slate-200"><div class="bg-slate-800 text-white p-2.5 sm:p-5 flex items-center justify-between"><div class="flex items-center gap-2 sm:gap-3"><div class="w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center text-[10px] sm:text-xl shrink-0">🏆</div><h3 class="text-xs sm:text-xl font-bold tracking-wide">${seasonName} Season</h3></div><span class="text-[7px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-900 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-center">Final Standings</span></div><div class="overflow-x-auto bg-slate-50 p-2 sm:p-4"><table class="min-w-full bg-white rounded-lg sm:rounded-xl overflow-hidden border border-slate-200"><thead class="bg-slate-100"><tr class="text-left text-[8px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide"><th class="px-1.5 sm:px-4 py-1.5 sm:py-4 w-8 sm:w-16 text-center">Pos</th><th class="px-1.5 sm:px-4 py-1.5 sm:py-4">Player</th><th class="px-1.5 sm:px-4 py-1.5 sm:py-4 text-center">Games</th><th class="px-1.5 sm:px-4 py-1.5 sm:py-4 text-center">Avg</th><th class="px-1.5 sm:px-4 py-1.5 sm:py-4 text-right">Score</th></tr></thead><tbody class="divide-y divide-slate-100">`;
+                
+                leaderboardData.forEach((player, index) => {
+                    let rowClass = 'hover:bg-slate-50 transition-colors';
+                    let rankBadge = `<span class="text-slate-500 font-bold">${index + 1}</span>`;
+                    if (index === 0) { rowClass = 'bg-amber-50/40'; rankBadge = `<span title="1st Place" class="text-xs sm:text-lg">👑</span>`; }
+                    else if (index === 1) { rowClass = 'bg-slate-100/40'; rankBadge = `<span title="2nd Place" class="text-xs sm:text-lg">🥈</span>`; }
+                    else if (index === 2) { rowClass = 'bg-orange-50/40'; rankBadge = `<span title="3rd Place" class="text-xs sm:text-lg">🥉</span>`; }
+
+                    html += `<tr class="${rowClass}"><td class="px-1.5 sm:px-4 py-1.5 sm:py-3 text-center text-[10px] sm:text-base">${rankBadge}</td><td class="px-1.5 sm:px-4 py-1.5 sm:py-3 font-semibold text-slate-800 flex items-center gap-1.5 sm:gap-3 text-[10px] sm:text-base">${getAvatar(player.name, 'w-5 h-5 sm:w-8 sm:h-8 text-[7px] sm:text-xs shadow-sm')} <span class="truncate">${player.name || 'Unknown'}</span></td><td class="px-1.5 sm:px-4 py-1.5 sm:py-3 text-center text-slate-600 text-[10px] sm:text-base">${player.gamesPlayed}</td><td class="px-1.5 sm:px-4 py-1.5 sm:py-3 text-center text-slate-600 text-[10px] sm:text-base">${player.averageScore}</td><td class="px-1.5 sm:px-4 py-1.5 sm:py-3 font-black text-brand-700 text-right text-[11px] sm:text-lg">${player.totalScore}</td></tr>`;
+                });
+                html += `</tbody></table></div></div>`;
+            }
+            html += '</div>';
+            container.innerHTML = html;
+            window.pastSeasonsDataRendered = true;
+        }
+
+        function handlePlayerStatsData(data) {
+            const container = document.getElementById('player-stats-view');
+            if (!data || !data.player) { container.innerHTML = `<div class="card p-6 sm:p-8 text-center text-red-600 font-bold text-sm">Failed to load player data.</div>`; return; }
+            const { player, scores, handicapHistory, highestScore, lowestScore, seasonPlacings } = data;
+
+            let html = `<div class="max-w-5xl mx-auto"><button id="back-to-stats-list" class="btn btn-secondary mb-3 sm:mb-6 text-[10px] sm:text-sm py-1.5 sm:py-2"><span class="mr-1">←</span> Back to Directory</button><div class="card overflow-hidden"><div class="bg-gradient-to-r from-slate-800 to-slate-900 p-4 sm:p-8 text-white relative"><div class="absolute top-0 right-0 p-4 sm:p-8 opacity-10 text-5xl sm:text-9xl leading-none font-black select-none">${getInitials(player.name)}</div><div class="relative z-10 flex flex-col md:flex-row items-center gap-3 sm:gap-6 text-center md:text-left">${getAvatar(player.name, 'w-16 h-16 sm:w-24 sm:h-24 text-xl sm:text-3xl border-2 sm:border-4 border-white/20 shadow-xl')} <div><h2 class="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">${player.name || 'Unknown'}</h2><div class="inline-flex items-center gap-1.5 sm:gap-2 mt-1.5 sm:mt-3 bg-white/10 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full backdrop-blur-md border border-white/10"><span class="text-slate-300 text-[8px] sm:text-sm uppercase tracking-wider font-bold">Current Handicap</span><span class="text-base sm:text-xl font-black text-brand-300">${(Number(player.handicap) || 0).toFixed(1)}</span></div></div></div></div><div class="p-3 sm:p-6 md:p-8 bg-slate-50"><h3 class="text-xs sm:text-lg font-bold text-slate-800 uppercase tracking-wide mb-2 sm:mb-4">Career Highlights</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-4"><div class="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm flex items-start gap-2.5 sm:gap-4"><div class="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center text-base sm:text-xl shrink-0">🔥</div><div><h4 class="text-[10px] sm:text-sm font-bold text-slate-500 uppercase tracking-wider mb-0.5 sm:mb-1">Best Round</h4>${highestScore ? `<div class="text-lg sm:text-3xl font-black text-slate-800 leading-none">${highestScore.stablefordPoints} <span class="text-[10px] sm:text-sm font-bold text-slate-400">pts</span></div><div class="text-[10px] sm:text-sm text-slate-600 mt-1 sm:mt-2 line-clamp-1">at <span class="font-semibold">${highestScore.courseName}</span></div><div class="text-[8px] sm:text-xs text-slate-400 mt-0.5">${highestScore.date}</div>` : '<div class="text-[10px] text-slate-400 italic mt-1">No rounds recorded</div>'}</div></div><div class="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm flex items-start gap-2.5 sm:gap-4"><div class="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-base sm:text-xl shrink-0">🧊</div><div><h4 class="text-[10px] sm:text-sm font-bold text-slate-500 uppercase tracking-wider mb-0.5 sm:mb-1">Toughest Round</h4>${lowestScore ? `<div class="text-lg sm:text-3xl font-black text-slate-800 leading-none">${lowestScore.stablefordPoints} <span class="text-[10px] sm:text-sm font-bold text-slate-400">pts</span></div><div class="text-[10px] sm:text-sm text-slate-600 mt-1 sm:mt-2 line-clamp-1">at <span class="font-semibold">${lowestScore.courseName}</span></div><div class="text-[8px] sm:text-xs text-slate-400 mt-0.5">${lowestScore.date}</div>` : '<div class="text-[10px] text-slate-400 italic mt-1">No rounds recorded</div>'}</div></div></div>${scores && scores.length > 1 ? `<div class="mt-4 sm:mt-8 bg-white p-3 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">${renderPerformanceChart(scores, handicapHistory)}</div>` : ''}<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mt-4 sm:mt-8"><div><h3 class="text-xs sm:text-lg font-bold text-slate-800 uppercase tracking-wide mb-2 sm:mb-4">Recent Form</h3><div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm overflow-hidden"><ul class="divide-y divide-slate-100">${scores && scores.length > 0 ? scores.map(score => `<li class="p-2.5 sm:p-4 flex items-center justify-between hover:bg-slate-50 transition-colors"><div><div class="font-bold text-slate-800 text-[11px] sm:text-base leading-tight">${score.courseName}</div><div class="text-[9px] sm:text-xs text-slate-500 mt-0.5">${new Date(score.date).toLocaleDateString('en-GB', {day: 'numeric', month: 'short', year: 'numeric'})}</div></div><div class="bg-slate-100 px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg font-black text-brand-700 text-xs sm:text-base">${score.stablefordPoints} <span class="text-[7px] sm:text-[10px] uppercase font-bold text-slate-400">pts</span></div></li>`).join('') : '<li class="p-3 sm:p-6 text-center text-slate-500 italic text-[10px] sm:text-sm">No recent scores found.</li>'}</ul></div></div><div><h3 class="text-xs sm:text-lg font-bold text-slate-800 uppercase tracking-wide mb-2 sm:mb-4">Trophy Cabinet</h3><div class="bg-white rounded-xl sm:rounded-2xl border border-slate-200 shadow-sm overflow-hidden p-1.5 sm:p-2">${seasonPlacings && seasonPlacings.length > 0 ? `<ul class="space-y-1.5 sm:space-y-2">${seasonPlacings.map(p => { let icon = '🏅'; let bg = 'bg-slate-50'; if(p.position === 1) { icon = '👑'; bg = 'bg-amber-50 border border-amber-100'; } else if(p.position === 2) { icon = '🥈'; bg = 'bg-slate-100 border border-slate-200'; } else if(p.position === 3) { icon = '🥉'; bg = 'bg-orange-50 border border-orange-100'; } return `<li class="${bg} p-2.5 sm:p-4 rounded-lg sm:rounded-xl flex items-center gap-2 sm:gap-4"><div class="text-base sm:text-2xl shrink-0">${icon}</div><div><div class="text-[9px] sm:text-sm text-slate-500 font-bold uppercase tracking-wider leading-none">${p.season} Season</div><div class="font-bold text-slate-800 text-[10px] sm:text-base mt-1 leading-none">Finished <span class="text-brand-600">${p.position}${getOrdinal(p.position)}</span> of ${p.totalPlayers}</div></div></li>`}).join('')}</ul>` : '<div class="p-3 sm:p-6 text-center text-slate-500 italic text-[10px] sm:text-sm">No historic season placements yet.</div>'}</div></div></div></div></div></div>`;
+            container.innerHTML = html;
+            document.getElementById('back-to-stats-list').addEventListener('click', () => { AppState.selectedPlayerStats = null; renderPlayerStatsView(); });
         }
 
         // --- View HTML Helpers ---
@@ -1226,7 +1252,6 @@ Keep responses concise and formatted for a chat bubble.`;
             return `<div class="card p-3 sm:p-6 md:p-8 max-w-6xl mx-auto shadow-lg shadow-slate-200/50 border-t-4 border-t-brand-500"><div class="mb-4 sm:mb-8 border-b border-slate-100 pb-2 sm:pb-4"><h2 class="text-xl sm:text-3xl font-extrabold text-slate-800">Mission Control</h2><p class="text-[10px] sm:text-sm text-slate-500 mt-1">Configure and generate the tee sheet for the next round.</p></div><div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8"><div class="lg:col-span-5 space-y-3 sm:space-y-6"><div class="bg-slate-50 p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 space-y-3 sm:space-y-5"><div><label class="block text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 sm:mb-2">Round Date</label><input type="date" id="newGameDate" class="shadow-sm text-xs sm:text-base p-1.5 sm:p-2.5" required></div><div><label class="block text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 sm:mb-2">Location / Course</label><select id="courseSelect" class="shadow-sm bg-white text-xs sm:text-base p-1.5 sm:p-2.5">${courseOptions}</select><div class="mt-2 sm:mt-3 flex justify-between items-center"><label class="flex items-center cursor-pointer group"><input type="checkbox" id="useSlopeRating" class="h-3 w-3 sm:h-4 sm:w-4 text-brand-600 rounded focus:ring-brand-500 border-slate-300"><span class="ml-1 sm:ml-2 text-[10px] sm:text-sm font-semibold text-slate-600 group-hover:text-slate-800 transition-colors">Apply Slope</span></label><button type="button" id="toggle-inline-course-form" class="text-[9px] sm:text-xs font-bold text-brand-600 hover:text-brand-800 bg-brand-50 px-1.5 sm:px-2 py-1 rounded transition-colors">+ Add Course</button></div><div id="inline-add-course-form" class="hidden mt-2 p-2 sm:p-4 border border-brand-100 rounded-lg sm:rounded-xl bg-white shadow-sm space-y-2 sm:space-y-3"><input type="text" id="inline-new-course-name" placeholder="Course Name" class="text-xs sm:text-sm p-1.5 sm:p-2"><div class="flex gap-2"><input type="number" id="inline-new-course-slope" placeholder="Slope" class="text-xs sm:text-sm p-1.5 sm:p-2"><button type="button" id="search-slope-rating-btn" class="btn btn-secondary whitespace-nowrap px-2 sm:px-3 py-1 text-[10px] sm:text-xs">Find</button></div><button type="button" id="submit-inline-course-btn" class="btn btn-primary w-full text-[10px] sm:text-xs py-1.5 sm:py-2">Save Course</button></div></div></div><div class="bg-slate-50 p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200"><label class="block text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5 sm:mb-2">Tee Time Generation</label><div class="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3"><div><div class="text-[8px] sm:text-[10px] font-semibold text-slate-400 mb-0.5 sm:mb-1">FIRST TEE</div><input type="time" id="firstTeeTime" value="09:00" class="shadow-sm text-xs sm:text-sm p-1.5 sm:p-2"></div><div><div class="text-[8px] sm:text-[10px] font-semibold text-slate-400 mb-0.5 sm:mb-1">INTERVAL (MIN)</div><input type="number" id="teeInterval" value="8" class="shadow-sm text-xs sm:text-sm p-1.5 sm:p-2"></div></div><button type="button" id="auto-generate-times-btn" class="btn btn-secondary w-full text-[10px] sm:text-sm mb-2 sm:mb-3 font-bold border border-slate-300 py-1.5 sm:py-2">Generate Times</button><input type="text" id="teeTimes" placeholder="e.g., 09:00, 09:08" class="shadow-sm text-[10px] sm:text-sm p-1.5 sm:p-2"></div><div class="bg-slate-50 p-3 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200"><label class="block text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide mb-1.5 sm:mb-2">Add Guests</label><div class="flex gap-2 mb-1.5 sm:mb-2"><input type="text" id="guestNameInput" placeholder="Guest Name" class="shadow-sm text-xs sm:text-sm p-1.5 sm:p-2"><button type="button" id="addGuestBtn" class="btn btn-secondary px-2.5 sm:px-4 font-bold border border-slate-300 text-xs sm:text-sm">+</button></div><ul id="guestList" class="space-y-1 sm:space-y-2 mt-1.5 sm:mt-2 empty:hidden text-[10px] sm:text-sm"></ul></div></div><div class="lg:col-span-7 flex flex-col"><div class="flex justify-between items-end mb-2 sm:mb-3 mt-2 sm:mt-4 lg:mt-0"><label class="block text-[9px] sm:text-xs font-bold text-slate-500 uppercase tracking-wide">Select Roster</label><div class="flex gap-1.5 sm:gap-2"><button type="button" id="selectAllPlayersBtn" class="text-[9px] sm:text-xs font-bold text-brand-600 bg-brand-50 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-md hover:bg-brand-100 transition-colors">Select All</button><button type="button" id="deselectAllPlayersBtn" class="text-[9px] sm:text-xs font-bold text-slate-500 bg-slate-100 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-md hover:bg-slate-200 transition-colors">Clear</button></div></div><div id="player-selection-list" class="flex-grow min-h-[200px] sm:min-h-[300px] max-h-[350px] sm:max-h-[600px] overflow-y-auto border border-slate-200 rounded-xl sm:rounded-2xl p-2 sm:p-4 bg-slate-50 space-y-1.5 sm:space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-3 content-start">${playerOptions}</div></div></div><div class="mt-4 sm:mt-8 pt-3 sm:pt-6 border-t border-slate-100"><button id="generate-tee-sheet-btn" class="w-full btn btn-primary text-sm sm:text-lg py-2.5 sm:py-4 shadow-lg shadow-brand-500/30">Proceed to Tee Sheet ⛳️</button></div></div>`;
         }
 
-        
         async function setupNewGame() {
             if (!AppState.isUserAdmin) return;
             const container = document.getElementById('upcoming-games-view');
@@ -1322,7 +1347,6 @@ Keep responses concise and formatted for a chat bubble.`;
             showConfirmationModal(`Start season "${newSeasonName}"? This archives the current season.`, async () => { setLoading(true, `Initializing Season...`); try { await window.startNewSeasonDb(newSeasonName); await getInitialData(); showMessage("New season initialized.", "success"); } catch(e) { handleFailure(e); } });
         }
 
-        // Utilities
         function getTeeSheetAndScoreEntryHTML() {
             let gameDateStr = 'TBC';
             if (AppState.currentGame && AppState.currentGame.date) gameDateStr = new Date(AppState.currentGame.date).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
@@ -1414,17 +1438,29 @@ Keep responses concise and formatted for a chat bubble.`;
             document.getElementById('cancel-tie-break-btn').onclick = () => document.getElementById('tie-break-modal').classList.add('hidden');
         }
 
-        // Global Utility Functions
-        function parseDate(dateStr) { const parts = String(dateStr).split('/'); if(parts.length!==3) return new Date(dateStr); return new Date(parts[2], parts[1]-1, parts[0]); }
+        function parseDate(dateStr) { 
+            const str = String(dateStr);
+            if (str.includes('-')) {
+                const parts = str.split('-');
+                if (parts.length === 3) return new Date(parts[0], parts[1]-1, parts[2]);
+            }
+            const parts = str.split('/'); 
+            if(parts.length!==3) return new Date(dateStr); 
+            return new Date(parts[2], parts[1]-1, parts[0]); 
+        }
+
         function getInitials(name) { return String(name||'').split(' ').map(n=>n[0]||'').join('').toUpperCase().substring(0,2); }
         function getAvatarColor(name) { const colors = ['#0ea5e9','#8b5cf6','#ec4899','#f43f5e','#f59e0b','#10b981','#14b8a6','#6366f1']; let hash=0; const sName = String(name||''); for(let i=0;i<sName.length;i++) hash=sName.charCodeAt(i)+((hash<<5)-hash); return colors[Math.abs(hash)%colors.length]; }
         function getAvatar(name, sizeClasses='w-8 h-8') { return `<div class="flex-shrink-0 ${sizeClasses} rounded-full flex items-center justify-center text-white font-bold tracking-wider" style="background-color: ${getAvatarColor(name)}">${getInitials(name)}</div>`; }
         function setLoading(isLoading, text="") { const l=document.getElementById('loader-view'), m=document.getElementById('main-content'); l.innerHTML=isLoading?`<div class="loader-container"><div class="loader mb-4"></div><p class="text-center font-bold text-slate-500 uppercase tracking-widest text-xs animate-pulse">${text}</p></div>`:''; l.style.display=isLoading?'flex':'none'; m.style.display=isLoading?'none':'block'; }
         function showMessage(text, type='info') { const b=document.getElementById('messageBox'); b.textContent=text; b.className='p-3 mb-3 text-sm rounded-xl font-bold shadow-md transform'; if(type==='success') { b.classList.add('bg-brand-50','text-brand-800','border','border-brand-200'); b.innerHTML=`<span>✅</span> ${text}`; } else if(type==='error') { b.classList.add('bg-red-50','text-red-800','border','border-red-200'); b.innerHTML=`<span>⚠️</span> ${text}`; } b.style.display='block'; setTimeout(()=>{b.style.display='none';}, 5000); }
         function handleFailure(err) { setLoading(false); showMessage(err.message || 'An error occurred.', 'error'); console.error(err); }
+        function getOrdinal(n) { const s = ["th", "st", "nd", "rd"], v = n % 100; return s[(v - 20) % 10] || s[v] || s[0]; }
         
         function getUpcomingDatesHTML() {
-            const upcomingDates = (AppState.gameDates || []).map(parseDate).filter(date => date >= new Date()).sort((a,b) => a - b);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Zero out time so games later today don't disappear early
+            const upcomingDates = (AppState.gameDates || []).map(parseDate).filter(date => date >= today).sort((a,b) => a - b);
             if (upcomingDates.length === 0) return '';
             let html = `
             <details class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-sm text-white group cursor-pointer [&::-webkit-details-marker]:hidden">
@@ -1615,16 +1651,84 @@ Keep responses concise and formatted for a chat bubble.`;
             }
         }
 
-        // Mock render helpers to keep functionality intact for unsupported features in minimal rewrite
-        function renderPlayerStatsView() {
-            const container = document.getElementById('player-stats-view');
-            container.innerHTML = `<div class="card p-10 mt-6 text-center text-slate-500 flex flex-col items-center justify-center"><div class="text-3xl sm:text-4xl mb-4 opacity-50">🚧</div><h3 class="text-lg sm:text-xl font-bold text-slate-700 mb-2">Player Stats Loading Soon</h3><p class="text-xs sm:text-sm">Historical profiling is currently updating its dataset.</p></div>`;
-        }
-        function renderPastSeasonsView() {
-            const container = document.getElementById('past-seasons-view');
-            container.innerHTML = `<div class="card p-10 mt-6 text-center text-slate-500 flex flex-col items-center justify-center"><div class="text-3xl sm:text-4xl mb-4 opacity-50">📚</div><h3 class="text-lg sm:text-xl font-bold text-slate-700 mb-2">Seasons Archive Loading Soon</h3></div>`;
+        function renderPerformanceChart(scores, handicapHistory) {
+            const chronologicalScores = [...scores].reverse();
+            const combinedData = chronologicalScores.map(score => {
+                const historyEntry = handicapHistory.find(h => new Date(h.date).toDateString() === new Date(score.date).toDateString());
+                return { score: score.stablefordPoints, handicap: historyEntry ? historyEntry.handicap : null, label: new Date(score.date).toLocaleDateString('en-GB', { month: 'short', day: 'numeric' }) };
+            });
+
+            if (combinedData.length < 2) return `<div class="text-center text-slate-500 py-3 text-[10px] sm:text-sm">Not enough data to graph form.</div>`;
+
+            const margin = { top: 20, right: 35, bottom: 25, left: 25 };
+            const width = 450;
+            const height = 200;
+            const chartWidth = width - margin.left - margin.right;
+            const chartHeight = height - margin.top - margin.bottom;
+
+            const scoresOnly = combinedData.map(d => d.score);
+            const yMaxScores = Math.max(...scoresOnly, 36) + 4;
+            const yMinScores = Math.max(0, Math.min(...scoresOnly) - 4);
+            const yRangeScores = yMaxScores - yMinScores;
+            const scoreToY = (p) => chartHeight - ((p - yMinScores) / yRangeScores * chartHeight);
+
+            const handicapsOnly = combinedData.map(d => d.handicap).filter(h => h !== null);
+            const yMaxHandicaps = handicapsOnly.length > 0 ? Math.max(...handicapsOnly) + 2 : 28;
+            const yMinHandicaps = handicapsOnly.length > 0 ? Math.max(0, Math.min(...handicapsOnly) - 2) : 0;
+            const yRangeHandicaps = yMaxHandicaps - yMinHandicaps;
+            const handicapToY = (h) => chartHeight - ((h - yMinHandicaps) / yRangeHandicaps * chartHeight);
+            
+            const pointToX = (i) => i * (chartWidth / (combinedData.length - 1));
+
+            const scoreCurve = generateSmoothPath(combinedData.map((d, i) => [pointToX(i), scoreToY(d.score)]));
+            const scoreCircles = combinedData.map((d, i) => `<circle cx="${pointToX(i)}" cy="${scoreToY(d.score)}" r="3" fill="#fff" stroke="#0d9488" stroke-width="1.5" class="hover:r-4 transition-all duration-200 cursor-pointer"><title>Score: ${d.score}\nDate: ${d.label}</title></circle>`).join('');
+            
+            let handicapCurve = '';
+            let handicapCircles = '';
+            if (handicapsOnly.length > 1) {
+                const validHandicapPoints = combinedData.map((d, i) => d.handicap !== null ? [pointToX(i), handicapToY(d.handicap)] : null).filter(Boolean);
+                handicapCurve = generateSmoothPath(validHandicapPoints);
+                handicapCircles = combinedData.map((d, i) => d.handicap !== null ? `<circle cx="${pointToX(i)}" cy="${handicapToY(d.handicap)}" r="2" fill="#fff" stroke="#f59e0b" stroke-width="1.5" class="hover:r-3 transition-all duration-200 cursor-pointer"><title>Handicap: ${(Number(d.handicap) || 0).toFixed(1)}\nDate: ${d.label}</title></circle>` : '').join('');
+            }
+
+            let yAxisLeftHTML = `<text transform="rotate(-90)" y="${-margin.left+8}" x="${-chartHeight/2}" text-anchor="middle" fill="#0d9488" font-size="8" font-weight="bold" letter-spacing="0.5">POINTS</text>`;
+            let yAxisRightHTML = handicapsOnly.length > 1 ? `<text transform="rotate(-90)" y="${chartWidth + margin.right - 6}" x="${-chartHeight/2}" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="bold" letter-spacing="0.5">HANDICAP</text>` : '';
+            let xAxisHTML = '';
+
+            const tickCount = 4;
+            for(let i = 0; i <= tickCount; i++) {
+                const scoreTick = Math.round(yMinScores + (yRangeScores / tickCount) * i);
+                yAxisLeftHTML += `<text x="-6" y="${scoreToY(scoreTick)}" dy="0.32em" text-anchor="end" fill="#94a3b8" font-size="7" font-weight="500">${scoreTick}</text>`;
+                yAxisLeftHTML += `<line x1="0" x2="${chartWidth}" y1="${scoreToY(scoreTick)}" y2="${scoreToY(scoreTick)}" stroke="#f1f5f9" stroke-width="1"></line>`;
+                if(handicapsOnly.length > 1) {
+                    const hcapTick = (yMinHandicaps + (yRangeHandicaps / tickCount) * i).toFixed(1);
+                    yAxisRightHTML += `<text x="${chartWidth + 6}" y="${handicapToY(parseFloat(hcapTick))}" dy="0.32em" text-anchor="start" fill="#94a3b8" font-size="7" font-weight="500">${hcapTick}</text>`;
+                }
+            }
+            
+            const step = Math.ceil(combinedData.length / 6);
+            combinedData.forEach((d, i) => {
+                if(i % step === 0 || i === combinedData.length -1) {
+                    xAxisHTML += `<text x="${pointToX(i)}" y="${chartHeight + 12}" text-anchor="middle" fill="#64748b" font-size="7" font-weight="500">${d.label}</text>`;
+                    xAxisHTML += `<line x1="${pointToX(i)}" x2="${pointToX(i)}" y1="${chartHeight}" y2="${chartHeight+3}" stroke="#cbd5e1" stroke-width="1"></line>`;
+                }
+            });
+
+            const legendHTML = `<g transform="translate(0, -10)"><rect x="0" y="0" width="8" height="2.5" rx="1" fill="#0d9488"></rect><text x="11" y="3" font-size="7" font-weight="600" fill="#475569" alignment-baseline="middle">Score</text>${handicapsOnly.length > 1 ? `<rect x="40" y="0" width="8" height="2.5" rx="1" fill="#f59e0b"></rect><text x="51" y="3" font-size="7" font-weight="600" fill="#475569" alignment-baseline="middle">Handicap</text>` : ''}</g>`;
+
+            return `<h3 class="text-[10px] sm:text-sm font-bold text-slate-500 uppercase tracking-wider mb-2 sm:mb-4">Form Guide</h3><div class="w-full overflow-x-auto pb-1 min-w-[320px]"><svg viewBox="0 0 ${width} ${height}" class="w-full h-auto drop-shadow-sm" style="overflow: visible;"><g transform="translate(${margin.left},${margin.top})">${legendHTML}${yAxisLeftHTML}${yAxisRightHTML}${xAxisHTML}<line x1="0" y1="${chartHeight}" x2="${chartWidth}" y2="${chartHeight}" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"></line><linearGradient id="scoreGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0d9488" stop-opacity="0.2" /><stop offset="100%" stop-color="#0d9488" stop-opacity="0.0" /></linearGradient><path d="${scoreCurve} L ${chartWidth} ${chartHeight} L 0 ${chartHeight} Z" fill="url(#scoreGradient)" /><path d="${scoreCurve}" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g>${scoreCircles}</g>${handicapsOnly.length > 1 ? `<path d="${handicapCurve}" fill="none" stroke="#f59e0b" stroke-width="1" stroke-dasharray="2,2" stroke-linecap="round"/><g>${handicapCircles}</g>` : ''}</g></svg></div>`;
         }
 
+        function generateSmoothPath(points) {
+            if(points.length === 0) return '';
+            let path = `M ${points[0][0]} ${points[0][1]}`;
+            if(points.length === 1) return path;
+            for(let i=0; i<points.length-1; i++) {
+                const cpX = (points[i][0] + points[i+1][0]) / 2;
+                path += ` C ${cpX} ${points[i][1]}, ${cpX} ${points[i+1][1]}, ${points[i+1][0]} ${points[i+1][1]}`;
+            }
+            return path;
+        }
     </script>
 </body>
 </html>
